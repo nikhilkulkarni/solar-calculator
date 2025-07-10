@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solar Power Plant Cost Analysis</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .input-section {
+            background: #ecf0f1;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .input-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #34495e;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #bdc3c7;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        button {
+            background: #3498db;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+            margin-top: 10px;
+        }
+        button:hover {
+            background: #2980b9;
+        }
+        .results {
+            margin-top: 20px;
+            padding: 20px;
+            background: #e8f5e8;
+            border-radius: 8px;
+            border-left: 5px solid #27ae60;
+        }
+        .year-breakdown {
+            margin-top: 20px;
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        th, td {
+            padding: 10px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+        th {
+            background: #3498db;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background: #f2f2f2;
+        }
+        .highlight {
+            background: #fff3cd;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 5px solid #ffc107;
+            margin-top: 15px;
+        }
+        .summary {
+            background: #d4edda;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 5px solid #28a745;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🌞 Solar Power Plant Cost Analysis</h1>
+        
+        <div class="input-section">
+            <h3>Plant Parameters</h3>
+            <div class="input-group">
+                <label for="capacity">Plant Capacity (kW):</label>
+                <input type="number" id="capacity" value="150" step="0.1">
+            </div>
+            <div class="input-group">
+                <label for="currency">Currency:</label>
+                <select id="currency" style="width: 100%; padding: 10px; border: 2px solid #bdc3c7; border-radius: 5px; font-size: 16px;">
+                    <option value="₹">₹ Indian Rupee (INR)</option>
+                    <option value="$">$ US Dollar (USD)</option>
+                    <option value="€">€ Euro (EUR)</option>
+                    <option value="£">£ British Pound (GBP)</option>
+                    <option value="¥">¥ Japanese Yen (JPY)</option>
+                    <option value="C$">C$ Canadian Dollar (CAD)</option>
+                    <option value="A$">A$ Australian Dollar (AUD)</option>
+                    <option value="₩">₩ South Korean Won (KRW)</option>
+                    <option value="₽">₽ Russian Ruble (RUB)</option>
+                    <option value="R$">R$ Brazilian Real (BRL)</option>
+                    <option value="₪">₪ Israeli Shekel (ILS)</option>
+                    <option value="₦">₦ Nigerian Naira (NGN)</option>
+                    <option value="₨">₨ Pakistani Rupee (PKR)</option>
+                    <option value="৳">৳ Bangladeshi Taka (BDT)</option>
+                    <option value="₨">₨ Sri Lankan Rupee (LKR)</option>
+                    <option value="Rp">Rp Indonesian Rupiah (IDR)</option>
+                    <option value="₱">₱ Philippine Peso (PHP)</option>
+                    <option value="₴">₴ Ukrainian Hryvnia (UAH)</option>
+                    <option value="₡">₡ Costa Rican Colón (CRC)</option>
+                    <option value="₲">₲ Paraguayan Guaraní (PYG)</option>
+                    <option value="₫">₫ Vietnamese Dong (VND)</option>
+                    <option value="₸">₸ Kazakhstani Tenge (KZT)</option>
+                    <option value="₼">₼ Azerbaijani Manat (AZN)</option>
+                    <option value="₾">₾ Georgian Lari (GEL)</option>
+                    <option value="₿">₿ Bitcoin (BTC)</option>
+                    <option value="R">R South African Rand (ZAR)</option>
+                    <option value="₵">₵ Ghanaian Cedi (GHS)</option>
+                    <option value="₤">₤ Turkish Lira (TRY)</option>
+                    <option value="CHF">CHF Swiss Franc (CHF)</option>
+                    <option value="kr">kr Swedish Krona (SEK)</option>
+                    <option value="kr">kr Norwegian Krone (NOK)</option>
+                    <option value="kr">kr Danish Krone (DKK)</option>
+                    <option value="zł">zł Polish Zloty (PLN)</option>
+                    <option value="Kč">Kč Czech Koruna (CZK)</option>
+                    <option value="Ft">Ft Hungarian Forint (HUF)</option>
+                    <option value="lei">lei Romanian Leu (RON)</option>
+                    <option value="лв">лв Bulgarian Lev (BGN)</option>
+                    <option value="kn">kn Croatian Kuna (HRK)</option>
+                    <option value="₨">₨ Nepalese Rupee (NPR)</option>
+                    <option value="Nu.">Nu. Bhutanese Ngultrum (BTN)</option>
+                    <option value="؋">؋ Afghan Afghani (AFN)</option>
+                    </select>
+            <div class="input-group">
+                <label for="cost">Total Installation Cost ():</label>
+                <input type="number" id="cost" value="10000000" step="1000">
+            </div>
+            <div class="input-group">
+                <label for="sunHours">Average Daily Sun Hours:</label>
+                <input type="number" id="sunHours" value="5" step="0.1">
+            </div>
+            <div class="input-group">
+                <label for="years">Analysis Period (Years):</label>
+                <input type="number" id="years" value="10" min="1" max="25">
+            </div>
+            <button onclick="calculateCost()">Calculate Per Unit Cost</button>
+        </div>
+
+        <div id="results" class="results" style="display: none;">
+            <h3>📊 Analysis Results</h3>
+            <div id="summary" class="summary"></div>
+            <div id="breakdown" class="year-breakdown"></div>
+        </div>
+    </div>
+
+    <script>
+        function calculateCost() {
+            const currency = document.getElementById('currency').value;
+            const capacity = parseFloat(document.getElementById('capacity').value);
+            const totalCost = parseFloat(document.getElementById('cost').value);
+            const sunHours = parseFloat(document.getElementById('sunHours').value);
+            const years = parseInt(document.getElementById('years').value);
+            
+            let totalGeneration = 0;
+            let yearlyData = [];
+            
+            // Calculate generation for each year with degradation
+            for (let year = 1; year <= years; year++) {
+                let degradationRate;
+                
+                if (year <= 6) {
+                    degradationRate = 0.05; // 5% for years 1-6
+                } else if (year <= 8) {
+                    degradationRate = 0.07; // 7% for years 7-8
+                } else {
+                    degradationRate = 0.10; // 10% for years 9-10
+                }
+                
+                // Calculate effective capacity for this year
+                let effectiveCapacity = capacity;
+                for (let i = 1; i < year; i++) {
+                    let prevDegradation;
+                    if (i <= 6) {
+                        prevDegradation = 0.05;
+                    } else if (i <= 8) {
+                        prevDegradation = 0.07;
+                    } else {
+                        prevDegradation = 0.10;
+                    }
+                    effectiveCapacity = effectiveCapacity * (1 - prevDegradation);
+                }
+                
+                // Annual generation = Capacity × Sun Hours × 365 days
+                const annualGeneration = effectiveCapacity * sunHours * 365;
+                totalGeneration += annualGeneration;
+                
+                yearlyData.push({
+                    year: year,
+                    effectiveCapacity: effectiveCapacity.toFixed(2),
+                    degradationRate: (degradationRate * 100).toFixed(0),
+                    annualGeneration: annualGeneration.toFixed(0)
+                });
+            }
+            
+            // Calculate per unit cost
+            const perUnitCost = totalCost / totalGeneration;
+            
+            // Display results
+            document.getElementById('results').style.display = 'block';
+            
+            const summaryHTML = `
+                <h4>💰 Cost Summary</h4>
+                <p><strong>Total Installation Cost:</strong> ${currency}${totalCost.toLocaleString('en-IN')}</p>
+                <p><strong>Total Generation over ${years} years:</strong> ${totalGeneration.toLocaleString('en-IN', {maximumFractionDigits: 0})} kWh</p>
+                <p><strong>Per Unit Cost:</strong> <span style="font-size: 1.2em; color: #27ae60;"><strong>${currency}${perUnitCost.toFixed(2)} per kWh</strong></span></p>
+                <p><strong>Average Annual Generation:</strong> ${(totalGeneration/years).toLocaleString('en-IN', {maximumFractionDigits: 0})} kWh</p>
+            `;
+            
+            document.getElementById('summary').innerHTML = summaryHTML;
+            
+            // Create yearly breakdown table
+            let tableHTML = `
+                <h4>📅 Year-wise Generation Analysis</h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Year</th>
+                            <th>Effective Capacity (kW)</th>
+                            <th>Degradation Rate</th>
+                            <th>Annual Generation (kWh)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+            `;
+            
+            yearlyData.forEach(data => {
+                tableHTML += `
+                    <tr>
+                        <td>${data.year}</td>
+                        <td>${data.effectiveCapacity}</td>
+                        <td>${data.degradationRate}%</td>
+                        <td>${parseFloat(data.annualGeneration).toLocaleString('en-IN')}</td>
+                    </tr>
+                `;
+            });
+            
+            tableHTML += `
+                    </tbody>
+                </table>
+                <div class="highlight">
+                    <h4>🔍 Key Insights</h4>
+                    <p>• Your solar plant will generate approximately <strong>${(totalGeneration/1000).toFixed(0)} MWh</strong> over ${years} years</p>
+                    <p>• The effective cost per unit is <strong>${currency}${perUnitCost.toFixed(2)}</strong>, which is typically much lower than grid electricity rates</p>
+                    <p>• First year generation: <strong>${parseFloat(yearlyData[0].annualGeneration).toLocaleString('en-IN')} kWh</strong></p>
+                    <p>• Final year generation: <strong>${parseFloat(yearlyData[years-1].annualGeneration).toLocaleString('en-IN')} kWh</strong></p>
+                    <p>• Total capacity loss over ${years} years: <strong>${((capacity - parseFloat(yearlyData[years-1].effectiveCapacity))/capacity*100).toFixed(1)}%</strong></p>
+                </div>
+            `;
+            
+            document.getElementById('breakdown').innerHTML = tableHTML;
+        }
+        
+        // Calculate on page load
+        window.onload = function() {
+            calculateCost();
+        };
+    </script>
+</body>
+</html>
